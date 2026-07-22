@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HardBeet — A calm daily check-in for people you love</title>
+    <meta name="description" content="HardBeet is a daily check-in aid for approved loved ones. One tap a day says “I'm here today” — with no live location and no private phone activity. Coming soon to iOS and Android.">
+    <meta property="og:title" content="HardBeet — A calm daily check-in for people you love">
+    <meta property="og:description" content="One tap a day says “I'm here today.” Approved loved ones see the agreed daily check-in details — never your live location or private phone activity. Coming soon to iOS and Android.">
+    <meta property="og:url" content="https://gethardbeet.com/">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Crect width='1024' height='1024' rx='224' fill='%23E9163D'/%3E%3Cpath d='M614 123L256 553H481L389 922L788 410H563L614 123Z' fill='%23050608'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+      :root {
+        --lp-paper: #F5F5F7;
+        --lp-deep: #ECECF0;
+        --lp-ink: #111114;
+        --lp-muted: #555A62;
+        --lp-line: #D6D6DC;
+        --lp-card: #FFFFFF;
+        --lp-crimson: #E9163D;
+        --lp-crimson-dark: #8F1028;
+        --lp-ok: #007A4D;
+        --lp-ok-soft: #E4F3EC;
+        --lp-mist: #FFF1F3;
+      }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        background: var(--lp-paper);
+        color: var(--lp-ink);
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .lp * { box-sizing: border-box; }
+      .lp a { font-weight: 600; }
+
+      .lp .wrap {
+        width: min(1080px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      /* ---------- Top bar ---------- */
+      .lp-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(245, 245, 247, 0.85);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--lp-line);
+      }
+
+      .lp-header .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 0;
+      }
+
+      .lp-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--lp-ink);
+      }
+
+      .lp-brand svg { display: block; border-radius: 9px; }
+
+      .lp-brand strong {
+        font-size: 17px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .lp-nav {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      .lp-nav a {
+        color: var(--lp-muted);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .lp-nav a:hover { color: var(--lp-ink); }
+
+      .lp-nav .lp-cta {
+        color: #fff;
+        background: var(--lp-ink);
+        border-radius: 999px;
+        padding: 9px 18px;
+      }
+
+      .lp-nav .lp-cta:hover { background: #000; color: #fff; }
+
+      @media (max-width: 720px) {
+        .lp-nav a:not(.lp-cta) { display: none; }
+      }
+
+      /* ---------- Hero ---------- */
+      .lp-hero { position: relative; overflow: hidden; }
+
+      .lp-hero::before {
+        content: "";
+        position: absolute;
+        inset: auto -20% -55% -20%;
+        height: 90%;
+        background: radial-gradient(closest-side, var(--lp-mist), transparent 72%);
+        pointer-events: none;
+      }
+
+      .lp-hero .wrap {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+        align-items: center;
+        gap: 48px;
+        padding: 72px 0 96px;
+      }
+
+      .lp-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--lp-crimson-dark);
+        background: var(--lp-mist);
+        border: 1px solid #F7CDD6;
+        border-radius: 999px;
+        padding: 6px 14px;
+        margin-bottom: 22px;
+      }
+
+      .lp-hero h1 {
+        margin: 0 0 18px;
+        font-size: clamp(38px, 5.6vw, 62px);
+        line-height: 1.04;
+        letter-spacing: -0.03em;
+        font-weight: 800;
+      }
+
+      .lp-hero h1 em {
+        font-style: normal;
+        color: var(--lp-crimson);
+      }
+
+      .lp-lede {
+        margin: 0 0 30px;
+        max-width: 520px;
+        color: var(--lp-muted);
+        font-size: 18px;
+      }
+
+      /* ---------- Store badges ---------- */
+      .lp-badges {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .lp-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 11px;
+        background: var(--lp-ink);
+        color: #fff;
+        border-radius: 12px;
+        padding: 10px 18px 10px 14px;
+        opacity: 0.55;
+        cursor: default;
+        user-select: none;
+      }
+
+      .lp-badge svg { display: block; }
+
+      .lp-badge .lines { display: flex; flex-direction: column; line-height: 1.2; text-align: left; }
+      .lp-badge .lines small { font-size: 10.5px; font-weight: 600; opacity: 0.8; letter-spacing: 0.02em; }
+      .lp-badge .lines span { font-size: 16.5px; font-weight: 700; letter-spacing: -0.01em; }
+
+      .lp-soon-note {
+        width: 100%;
+        margin: 6px 0 0;
+        font-size: 13.5px;
+        color: var(--lp-muted);
+      }
+
+      /* ---------- Phone mockups ---------- */
+      .lp-phones {
+        position: relative;
+        min-height: 560px;
+      }
+
+      .lp-phone {
+        width: 272px;
+        background: var(--lp-ink);
+        border-radius: 42px;
+        padding: 9px;
+        box-shadow: 0 24px 60px rgba(17, 17, 20, 0.18);
+      }
+
+      .lp-phone .screen {
+        background: var(--lp-paper);
+        border-radius: 34px;
+        overflow: hidden;
+        font-size: 12px;
+      }
+
+      .lp-phone.front {
+        position: absolute;
+        left: 0;
+        top: 40px;
+        z-index: 2;
+      }
+
+      .lp-phone.back {
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: scale(0.94);
+        transform-origin: top right;
+        opacity: 0.96;
+      }
+
+      .lp-statusbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 18px 4px;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .lp-statusbar .dots { display: inline-flex; gap: 3px; }
+      .lp-statusbar .dots i {
+        width: 4px; height: 4px; border-radius: 50%;
+        background: var(--lp-ink); display: inline-block;
+      }
+
+      .lp-appbar { padding: 10px 16px 2px; }
+      .lp-appbar h3 {
+        margin: 0;
+        font-size: 19px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      .lp-appbar p {
+        margin: 3px 0 0;
+        font-size: 11px;
+        color: var(--lp-muted);
+      }
+
+      .lp-card {
+        background: var(--lp-card);
+        border: 1px solid var(--lp-line);
+        border-radius: 14px;
+        margin: 12px 12px;
+        padding: 14px;
+      }
+
+      .lp-card .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .lp-card h4 {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .lp-chip {
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--lp-muted);
+        background: var(--lp-deep);
+        border-radius: 999px;
+        padding: 3px 9px;
+        white-space: nowrap;
+      }
+
+      .lp-checkin-btn {
+        margin: 13px 0 10px;
+        background: var(--lp-crimson);
+        color: #fff;
+        border-radius: 12px;
+        text-align: center;
+        font-size: 14.5px;
+        font-weight: 800;
+        padding: 13px 10px;
+        box-shadow: 0 8px 18px rgba(233, 22, 61, 0.28);
+      }
+
+      .lp-caption {
+        margin: 0;
+        font-size: 10.5px;
+        line-height: 1.5;
+        color: var(--lp-muted);
+      }
+
+      .lp-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 10px;
+        font-weight: 800;
+        border-radius: 999px;
+        padding: 4px 8px;
+        white-space: nowrap;
+      }
+
+      .lp-pill.ok { background: var(--lp-ok-soft); color: var(--lp-ok); }
+
+      .lp-avatar {
+        width: 30px; height: 30px;
+        border-radius: 50%;
+        background: var(--lp-deep);
+        color: var(--lp-ink);
+        display: inline-grid;
+        place-items: center;
+        font-size: 12px;
+        font-weight: 800;
+        flex: none;
+      }
+
+      .lp-person { display: flex; align-items: center; gap: 9px; }
+      .lp-person b { font-size: 13px; white-space: nowrap; }
+      .lp-person small { display: block; font-size: 10px; color: var(--lp-muted); white-space: nowrap; }
+
+      .lp-next {
+        margin: 10px 0 0;
+        padding-top: 9px;
+        border-top: 1px solid var(--lp-line);
+        font-size: 10.5px;
+        color: var(--lp-muted);
+      }
+
+      @media (max-width: 900px) {
+        .lp-hero .wrap {
+          grid-template-columns: 1fr;
+          padding: 52px 0 64px;
+          gap: 40px;
+        }
+        .lp-phones {
+          min-height: 0;
+          display: flex;
+          justify-content: center;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+        .lp-phone.front, .lp-phone.back {
+          position: static;
+          transform: none;
+        }
+        .lp-phone.front { order: -1; }
+      }
+
+      /* ---------- Sections ---------- */
+      .lp-section { padding: 84px 0; }
+      .lp-section.alt { background: var(--lp-card); border-block: 1px solid var(--lp-line); }
+
+      .lp-kicker {
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--lp-crimson);
+        margin: 0 0 10px;
+      }
+
+      .lp-section h2 {
+        margin: 0 0 14px;
+        font-size: clamp(28px, 3.6vw, 40px);
+        letter-spacing: -0.025em;
+        line-height: 1.12;
+        font-weight: 800;
+      }
+
+      .lp-sub {
+        margin: 0 0 40px;
+        max-width: 640px;
+        color: var(--lp-muted);
+        font-size: 17px;
+      }
+
+      .lp-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .lp-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+      @media (max-width: 860px) {
+        .lp-grid, .lp-grid.two { grid-template-columns: 1fr; }
+      }
+
+      .lp-tile {
+        background: var(--lp-card);
+        border: 1px solid var(--lp-line);
+        border-radius: 16px;
+        padding: 26px;
+      }
+
+      .lp-section.alt .lp-tile { background: var(--lp-paper); }
+
+      .lp-step-num {
+        display: inline-grid;
+        place-items: center;
+        width: 34px; height: 34px;
+        border-radius: 10px;
+        background: var(--lp-mist);
+        color: var(--lp-crimson-dark);
+        font-weight: 800;
+        font-size: 15px;
+        margin-bottom: 14px;
+      }
+
+      .lp-tile h3 {
+        margin: 0 0 8px;
+        font-size: 18.5px;
+        letter-spacing: -0.015em;
+        font-weight: 800;
+      }
+
+      .lp-tile p {
+        margin: 0;
+        color: var(--lp-muted);
+        font-size: 15px;
+      }
+
+      /* ---------- Shared / never shared ---------- */
+      .lp-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      .lp-list li {
+        display: flex;
+        gap: 11px;
+        align-items: flex-start;
+        font-size: 15px;
+        color: var(--lp-ink);
+      }
+
+      .lp-list .ico {
+        flex: none;
+        width: 22px; height: 22px;
+        border-radius: 50%;
+        display: inline-grid;
+        place-items: center;
+        font-size: 11px;
+        font-weight: 800;
+        margin-top: 1px;
+      }
+
+      .lp-list .ico.yes { background: var(--lp-ok-soft); color: var(--lp-ok); }
+      .lp-list .ico.no { background: var(--lp-mist); color: var(--lp-crimson-dark); }
+
+      .lp-tile .lp-tag {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        padding: 5px 12px;
+        border-radius: 999px;
+      }
+
+      .lp-tag.shared { background: var(--lp-ok-soft); color: var(--lp-ok); }
+      .lp-tag.never { background: var(--lp-mist); color: var(--lp-crimson-dark); }
+
+      /* ---------- Honesty strip ---------- */
+      .lp-not {
+        border-radius: 18px;
+        border: 1px solid var(--lp-line);
+        background: var(--lp-card);
+        padding: 34px;
+      }
+
+      .lp-not h3 {
+        margin: 0 0 10px;
+        font-size: 22px;
+        letter-spacing: -0.02em;
+        font-weight: 800;
+      }
+
+      .lp-not p { margin: 0; color: var(--lp-muted); font-size: 15.5px; max-width: 760px; }
+
+      /* ---------- FAQ ---------- */
+      .lp-faq { max-width: 760px; margin-top: 34px; }
+
+      .lp-faq details {
+        background: var(--lp-card);
+        border: 1px solid var(--lp-line);
+        border-radius: 14px;
+        padding: 20px 24px;
+        margin-bottom: 12px;
+      }
+
+      .lp-faq summary {
+        cursor: pointer;
+        font-size: 16.5px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .lp-faq summary::-webkit-details-marker { display: none; }
+
+      .lp-faq summary::after {
+        content: "+";
+        font-size: 21px;
+        font-weight: 600;
+        color: var(--lp-muted);
+        transition: transform 0.18s ease;
+      }
+
+      .lp-faq details[open] summary::after { transform: rotate(45deg); }
+
+      .lp-faq details p {
+        margin: 12px 0 0;
+        color: var(--lp-muted);
+        font-size: 15px;
+      }
+
+      /* ---------- Download ---------- */
+      .lp-download {
+        text-align: center;
+        padding: 96px 0;
+      }
+
+      .lp-download .lp-badges { justify-content: center; }
+      .lp-download h2 {
+        margin: 0 0 14px;
+        font-size: clamp(28px, 3.6vw, 40px);
+        letter-spacing: -0.025em;
+        line-height: 1.12;
+        font-weight: 800;
+      }
+      .lp-download .lp-sub { margin-inline: auto; }
+
+      /* ---------- Footer ---------- */
+      .lp-footer {
+        border-top: 1px solid var(--lp-line);
+        background: var(--lp-card);
+        padding: 44px 0 52px;
+        font-size: 14px;
+        color: var(--lp-muted);
+      }
+
+      .lp-footer .cols {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 28px;
+        margin-bottom: 26px;
+      }
+
+      .lp-footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
+
+      .lp-footer a { color: var(--lp-ink); text-decoration: none; font-weight: 600; }
+      .lp-footer a:hover { text-decoration: underline; }
+
+      .lp-footer .fine {
+        border-top: 1px solid var(--lp-line);
+        padding-top: 22px;
+        font-size: 13px;
+        max-width: 760px;
+      }
+    </style>
+  </head>
+  <body class="lp">
+    <header class="lp-header">
+      <div class="wrap">
+        <a class="lp-brand" href="./index.html" aria-label="HardBeet home">
+          <svg width="30" height="30" viewBox="0 0 1024 1024" aria-hidden="true"><rect width="1024" height="1024" fill="#E9163D"/><path d="M614 123L256 553H481L389 922L788 410H563L614 123Z" fill="#050608"/></svg>
+          <strong>HardBeet</strong>
+        </a>
+        <nav class="lp-nav" aria-label="Main">
+          <a href="#how">How it works</a>
+          <a href="#approach">Privacy</a>
+          <a href="#faq">FAQ</a>
+          <a class="lp-cta" href="#download">Get the app</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="lp-hero">
+        <div class="wrap">
+          <div>
+            <span class="lp-eyebrow">Coming soon · iOS &amp; Android</span>
+            <h1>One tap a day says <em>“I'm here.”</em></h1>
+            <p class="lp-lede">
+              HardBeet is a daily check-in aid for approved loved ones. Check in
+              once a day; the people you approve see the agreed daily check-in
+              details. It cannot see your messages, read health details, or
+              share live location.
+            </p>
+            <div class="lp-badges" aria-label="App store availability">
+              <span class="lp-badge" aria-disabled="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.54c-.03-2.89 2.36-4.28 2.47-4.35-1.35-1.97-3.44-2.24-4.18-2.27-1.78-.18-3.47 1.05-4.37 1.05-.9 0-2.29-1.02-3.77-1-1.94.03-3.72 1.13-4.72 2.86-2.01 3.49-.51 8.66 1.45 11.49.96 1.39 2.1 2.94 3.6 2.88 1.44-.06 1.99-.93 3.73-.93 1.74 0 2.23.93 3.76.9 1.55-.03 2.53-1.41 3.48-2.8 1.09-1.61 1.54-3.16 1.57-3.24-.03-.02-3-1.15-3.02-4.59zM14.16 4.06c.8-.96 1.33-2.3 1.18-3.64-1.14.05-2.53.76-3.35 1.72-.73.85-1.38 2.21-1.21 3.52 1.28.1 2.58-.65 3.38-1.6z"/></svg>
+                <span class="lines"><small>Coming soon on the</small><span>App Store</span></span>
+              </span>
+              <span class="lp-badge" aria-disabled="true">
+                <svg width="22" height="24" viewBox="0 0 24 26" fill="currentColor" aria-hidden="true"><path d="M1.57.62A2.02 2.02 0 0 0 1 2.05v21.9c0 .56.22 1.06.57 1.43l.09.08L13.93 13.2v-.28L1.66.54l-.09.08z"/><path d="M18.02 17.29l-4.09-4.1v-.28l4.09-4.09.09.05 4.85 2.76c1.39.78 1.39 2.07 0 2.86l-4.85 2.75-.09.05z" opacity=".8"/><path d="M18.11 17.24l-4.18-4.18L1.57 25.38c.46.48 1.21.54 2.06.06l14.48-8.2" opacity=".6"/><path d="M18.11 8.87L3.63.67C2.78.19 2.03.25 1.57.73l12.36 12.33 4.18-4.19z" opacity=".9"/></svg>
+                <span class="lines"><small>Coming soon on</small><span>Google Play</span></span>
+              </span>
+              <p class="lp-soon-note">
+                Launching soon. Want a note when it's live? Email
+                <a href="mailto:support@gethardbeet.com">support@gethardbeet.com</a>.
+              </p>
+            </div>
+          </div>
+
+          <div class="lp-phones" aria-hidden="true">
+            <div class="lp-phone back">
+              <div class="screen">
+                <div class="lp-statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+                <div class="lp-appbar">
+                  <h3>Loved ones</h3>
+                  <p>People you follow</p>
+                </div>
+                <div class="lp-card">
+                  <div class="row">
+                    <span class="lp-person">
+                      <span class="lp-avatar">M</span>
+                      <span><b>Mom</b></span>
+                    </span>
+                    <span class="lp-pill ok">✓ Checked in today</span>
+                  </div>
+                  <p class="lp-next">Today's daily check-in was recorded.</p>
+                </div>
+                <div class="lp-card">
+                  <div class="row">
+                    <span class="lp-person">
+                      <span class="lp-avatar">D</span>
+                      <span><b>Dad</b></span>
+                    </span>
+                    <span class="lp-pill ok">✓ Checked in today</span>
+                  </div>
+                  <p class="lp-next">Checked in 8:12 AM his time · 2:12 PM for you.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="lp-phone front">
+              <div class="screen">
+                <div class="lp-statusbar"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+                <div class="lp-appbar">
+                  <h3>Daily check-in</h3>
+                  <p>A simple daily signal for people you approve.</p>
+                </div>
+                <div class="lp-card">
+                  <div class="row">
+                    <h4>My check-in</h4>
+                    <span class="lp-chip">Daily time 2:00 PM</span>
+                  </div>
+                  <div class="lp-checkin-btn">I'm here today</div>
+                  <p class="lp-caption">
+                    Maya can see whether you checked in today. She cannot see
+                    your location, messages, calls, photos, app history, or
+                    health details.
+                  </p>
+                </div>
+                <div class="lp-card">
+                  <div class="row">
+                    <h4>Sharing agreement</h4>
+                    <span class="lp-chip">Pause anytime</span>
+                  </div>
+                  <p class="lp-next">You choose who sees your check-in — and you can stop sharing whenever you want.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-section" id="how">
+        <div class="wrap">
+          <p class="lp-kicker">How it works</p>
+          <h2>A calm routine, not a monitor.</h2>
+          <p class="lp-sub">
+            HardBeet keeps a daily touchpoint between independent adults and the
+            people who care about them — on clear, agreed terms.
+          </p>
+          <div class="lp-grid">
+            <div class="lp-tile">
+              <span class="lp-step-num">1</span>
+              <h3>Check in with one tap</h3>
+              <p>
+                Tap “I'm here today” once a day, at a daily time you choose.
+                That tap is the only thing that creates a check-in.
+              </p>
+            </div>
+            <div class="lp-tile">
+              <span class="lp-step-num">2</span>
+              <h3>Invite people you approve</h3>
+              <p>
+                Share an invite code with someone you trust. They review and
+                accept a plain-language agreement before they see anything.
+              </p>
+            </div>
+            <div class="lp-tile">
+              <span class="lp-step-num">3</span>
+              <h3>They see today's signal</h3>
+              <p>
+                Approved loved ones see whether today's check-in happened — shown
+                in your time zone and theirs. Nothing beyond the agreement is shared.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-section alt" id="late">
+        <div class="wrap">
+          <p class="lp-kicker">When a day slips</p>
+          <h2>Gentle first. Always.</h2>
+          <p class="lp-sub">
+            Life happens — travel, rest, a phone left in another room. HardBeet
+            is built to stay calm about it.
+          </p>
+          <div class="lp-grid">
+            <div class="lp-tile">
+              <h3>You hear first</h3>
+              <p>
+                If your daily time passes without a check-in, HardBeet reminds
+                you before anyone else is told.
+              </p>
+            </div>
+            <div class="lp-tile">
+              <h3>Followers hear one hour later</h3>
+              <p>
+                If there's still no check-in an hour after your daily time,
+                approved loved ones get one clear notification — with a gentle
+                suggestion, never an alarm.
+              </p>
+            </div>
+            <div class="lp-tile">
+              <h3>Pause when you mean to be quiet</h3>
+              <p>
+                Traveling, resting, or intentionally offline? Pause sharing for
+                24 hours, 7 days, or until you turn it back on. No missed
+                check-in notifications are sent while paused.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-section" id="approach">
+        <div class="wrap">
+          <p class="lp-kicker">Private by design</p>
+          <h2>They see a small daily signal. Not your life.</h2>
+          <p class="lp-sub">
+            No surveillance, no live map, no activity feed. The agreement is
+            plain about what's shared — and what never is.
+          </p>
+          <div class="lp-grid two">
+            <div class="lp-tile">
+              <span class="lp-tag shared">Shared</span>
+              <ul class="lp-list">
+                <li><span class="ico yes">✓</span>Whether your daily check-in happened today</li>
+                <li><span class="ico yes">✓</span>Your chosen daily time, shown in both time zones</li>
+                <li><span class="ico yes">✓</span>When sharing is paused, so no one is surprised</li>
+              </ul>
+            </div>
+            <div class="lp-tile">
+              <span class="lp-tag never">Never shared</span>
+              <ul class="lp-list">
+                <li><span class="ico no">✕</span>Live location — HardBeet cannot share live location</li>
+                <li><span class="ico no">✕</span>Messages, calls, photos, contacts, or app history</li>
+                <li><span class="ico no">✕</span>Health details of any kind</li>
+                <li><span class="ico no">✕</span>Private phone activity — only your tap creates a check-in</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-section alt" id="not">
+        <div class="wrap">
+          <div class="lp-not">
+            <h3>What HardBeet is not</h3>
+            <p>
+              HardBeet is not an emergency response service, a medical monitor,
+              or proof that someone is safe. Notifications are best effort and
+              depend on phones and networks. If someone may need urgent help,
+              contact local services or another real-world support channel
+              directly.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-section" id="faq">
+        <div class="wrap">
+          <p class="lp-kicker">FAQ</p>
+          <h2>Fair questions.</h2>
+          <div class="lp-faq">
+            <details>
+              <summary>Does HardBeet share my location?</summary>
+              <p>
+                No. HardBeet has no live location feature at all. Approved
+                loved ones see the agreed check-in, timing, and pause details
+                described above. They never see live location or private phone activity.
+              </p>
+            </details>
+            <details>
+              <summary>What happens if I miss a check-in?</summary>
+              <p>
+                You get a reminder first. If there's still no check-in one hour
+                after your daily time, your approved loved ones receive a single
+                notification suggesting a call or text may help. Notifications
+                are best effort and should never replace real-world contact.
+              </p>
+            </details>
+            <details>
+              <summary>Who can see my check-in?</summary>
+              <p>
+                Only people you invite and approve. Each connection starts with
+                a plain-language agreement, and you can pause or stop sharing at
+                any time from the app.
+              </p>
+            </details>
+            <details>
+              <summary>Can followers quiet notifications overnight?</summary>
+              <p>
+                Yes. Followers can quiet overnight notifications or hold them
+                until morning, so a late check-in never turns into a 3 AM wake-up.
+              </p>
+            </details>
+            <details>
+              <summary>How do I delete my account?</summary>
+              <p>
+                From Settings → Privacy and account → Delete account, or by
+                following the steps on our
+                <a href="./delete-account.html">account deletion page</a>.
+                Deletion removes your account and associated personal data.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-download" id="download">
+        <div class="wrap">
+          <p class="lp-kicker">Get HardBeet</p>
+          <h2>Coming soon to both stores.</h2>
+          <p class="lp-sub">
+            HardBeet is launching soon on iOS and Android. Email
+            <a href="mailto:support@gethardbeet.com">support@gethardbeet.com</a>
+            and we'll let you know the moment it's live.
+          </p>
+          <div class="lp-badges" aria-label="App store availability">
+            <span class="lp-badge" aria-disabled="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.54c-.03-2.89 2.36-4.28 2.47-4.35-1.35-1.97-3.44-2.24-4.18-2.27-1.78-.18-3.47 1.05-4.37 1.05-.9 0-2.29-1.02-3.77-1-1.94.03-3.72 1.13-4.72 2.86-2.01 3.49-.51 8.66 1.45 11.49.96 1.39 2.1 2.94 3.6 2.88 1.44-.06 1.99-.93 3.73-.93 1.74 0 2.23.93 3.76.9 1.55-.03 2.53-1.41 3.48-2.8 1.09-1.61 1.54-3.16 1.57-3.24-.03-.02-3-1.15-3.02-4.59zM14.16 4.06c.8-.96 1.33-2.3 1.18-3.64-1.14.05-2.53.76-3.35 1.72-.73.85-1.38 2.21-1.21 3.52 1.28.1 2.58-.65 3.38-1.6z"/></svg>
+              <span class="lines"><small>Coming soon on the</small><span>App Store</span></span>
+            </span>
+            <span class="lp-badge" aria-disabled="true">
+              <svg width="22" height="24" viewBox="0 0 24 26" fill="currentColor" aria-hidden="true"><path d="M1.57.62A2.02 2.02 0 0 0 1 2.05v21.9c0 .56.22 1.06.57 1.43l.09.08L13.93 13.2v-.28L1.66.54l-.09.08z"/><path d="M18.02 17.29l-4.09-4.1v-.28l4.09-4.09.09.05 4.85 2.76c1.39.78 1.39 2.07 0 2.86l-4.85 2.75-.09.05z" opacity=".8"/><path d="M18.11 17.24l-4.18-4.18L1.57 25.38c.46.48 1.21.54 2.06.06l14.48-8.2" opacity=".6"/><path d="M18.11 8.87L3.63.67C2.78.19 2.03.25 1.57.73l12.36 12.33 4.18-4.19z" opacity=".9"/></svg>
+              <span class="lines"><small>Coming soon on</small><span>Google Play</span></span>
+            </span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="lp-footer">
+      <div class="wrap">
+        <div class="cols">
+          <a class="lp-brand" href="./index.html" aria-label="HardBeet home">
+            <svg width="26" height="26" viewBox="0 0 1024 1024" aria-hidden="true"><rect width="1024" height="1024" fill="#E9163D"/><path d="M614 123L256 553H481L389 922L788 410H563L614 123Z" fill="#050608"/></svg>
+            <strong>HardBeet</strong>
+          </a>
+          <nav aria-label="Legal pages">
+            <a href="./privacy.html">Privacy Policy</a>
+            <a href="./terms.html">Terms of Service</a>
+            <a href="./delete-account.html">Delete account</a>
+          </nav>
+        </div>
+        <div class="cols">
+          <span>Support: <a href="mailto:support@gethardbeet.com">support@gethardbeet.com</a></span>
+          <span>Legal: <a href="mailto:legal@gethardbeet.com">legal@gethardbeet.com</a></span>
+        </div>
+        <p class="fine">
+          HardBeet is a daily check-in aid for approved loved ones. It cannot
+          call services for you, read health details, or share live location.
+          If someone may need urgent help, contact local services directly.
+          © 2026 HardBeet.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
