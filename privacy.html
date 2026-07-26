@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="hardbeet-legal-document" content="privacy">
+    <meta name="hardbeet-legal-version" content="2026-07-25-v1">
+    <meta name="hardbeet-legal-locale" content="en">
     <title>HardBeet Privacy Policy</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
@@ -22,15 +25,28 @@
 
       <section class="hero">
         <h1>Privacy Policy</h1>
-        <p class="lede">Last updated: July 18, 2026</p>
+        <p class="lede">Last updated: July 25, 2026</p>
+      </section>
+
+      <section class="panel">
+        <h2>Who operates HardBeet</h2>
+        <p>
+          HardBeet is a product operated by ElseBranch Inc. ("ElseBranch," "we," "us," or "our").
+          ElseBranch Inc. is the controller of personal information processed for HardBeet.
+        </p>
+        <ul>
+          <li>Company website: <a href="https://www.elsebranch.com">www.elsebranch.com</a></li>
+          <li>Privacy and legal: <a href="mailto:legal@gethardbeet.com">legal@gethardbeet.com</a></li>
+          <li>Account and product support: <a href="mailto:support@gethardbeet.com">support@gethardbeet.com</a></li>
+        </ul>
       </section>
 
       <section class="panel callout">
         <h2>Product boundary</h2>
         <p>
-          HardBeet is a daily check-in aid for people who choose to share a simple
-          check-in status with approved loved ones. HardBeet is not an emergency
-          response service, medical monitor, location tracker, or proof that someone is safe.
+          HardBeet is a daily check-in aid for people who choose to share a simple check-in status
+          with approved loved ones. HardBeet is not an emergency response service, medical monitor,
+          location tracker, or proof that someone is safe.
         </p>
       </section>
 
@@ -38,27 +54,39 @@
         <h2>What HardBeet collects</h2>
         <ul>
           <li>Email address or phone number used for sign-in. HardBeet does not show either to approved connections.</li>
+          <li>Password authentication data for accounts configured to use a password. Supabase processes the password for authentication; HardBeet does not store or display the plaintext password.</li>
           <li>Apple or Google account identifier and authentication data when that sign-in method is chosen. HardBeet does not receive the user's Apple or Google password.</li>
-          <li>First name or display name if provided in the app.</li>
+          <li>First name or display name provided in the app.</li>
           <li>Expo push token for reminders and approved follower alerts.</li>
           <li>Daily check-in timestamps, including the most recent check-in time.</li>
           <li>Supporting signal timestamps and labels, such as app-open updates, coarse motion-triggered attempts, battery-state attempts, and background-task attempts.</li>
-          <li>Approved connection records, optional private relationship labels a user adds to their own list, invite codes, check-in settings, preferred language, follower quiet-hours preference, pause state, alert status, and notification delivery records.</li>
+          <li>Approved connection records and optional private relationship labels a user adds to their own list.</li>
+          <li>Invite codes and invite status, including creation, acceptance, cancellation, and expiry.</li>
+          <li>Mutual-invitation consent version, language, timestamp, and connection record.</li>
+          <li>Product-consent, Terms of Service, and Privacy Policy versions, timestamps, and the language of the legal documents shown. The current legal documents are provided in English.</li>
+          <li>Reminder time, timezone, language, pause, quiet-hours, setup, and alert settings.</li>
+          <li>Notification delivery records, including whether delivery was attempted, accepted, retried, skipped, or failed.</li>
           <li>Device platform information needed for push notifications and troubleshooting.</li>
         </ul>
+        <p>
+          If a phone is offline after the check-in button is tapped, the pending time and timezone
+          may remain on that phone until delivery succeeds or the local queue is cleared. Approved
+          loved ones cannot see it before the backend confirms it.
+        </p>
+        <p>
+          Requesting a sign-in code may create or access a provisional authentication record before
+          the user finishes the consent screen. HardBeet shows links to this policy and the Terms
+          before the user submits an email address or phone number. A provisional record does not
+          activate check-in sharing. The user can request deletion if they do not complete setup.
+        </p>
       </section>
 
       <section class="panel">
         <h2>Manual check-ins and private diagnostics</h2>
         <p>
-          Only an explicit tap on I'm here today creates a daily check-in. App opens, coarse
-          motion, battery changes, and background attempts are private, best-effort diagnostics.
-          They do not create a check-in, change loved-one status, or appear to approved loved ones.
-        </p>
-        <p>
-          If the phone is offline, a pending check-in time and timezone may be stored on that phone
-          until delivery succeeds or the local queue is cleared. Approved loved ones cannot see it
-          before the backend confirms it.
+          Only an explicit tap on I'm here today creates a daily check-in. App opens, coarse motion,
+          battery changes, and background attempts are private, best-effort diagnostics. They do
+          not create a check-in, change loved-one status, or appear to approved loved ones.
         </p>
       </section>
 
@@ -76,77 +104,147 @@
       <section class="panel">
         <h2>What approved loved ones can see</h2>
         <p>
-          Approved loved ones can see whether the person has checked in today, the most recent
-          daily check-in time, whether sharing is paused, and suggested next steps such as wait or
-          ask the person to open HardBeet. Email addresses, phone numbers, and sign-in providers are
-          not shown through connections.
+          Approved loved ones can see whether the person checked in today, the most recent daily
+          check-in time, whether sharing is paused, and suggested next steps such as wait, call,
+          text, or ask the person to open HardBeet.
         </p>
         <p>
-          Approved loved ones cannot see email addresses, phone numbers, sign-in providers, supporting signals, live location, private phone activity,
-          messages, photos, apps, browser history, or health details.
+          They cannot see email addresses, phone numbers, sign-in providers, supporting signals,
+          live location, private phone activity, messages, photos, apps, browser history, or health
+          details through HardBeet.
         </p>
       </section>
 
       <section class="panel">
-        <h2>How HardBeet uses information</h2>
+        <h2>Sources, uses, and legal bases</h2>
         <p>
-          HardBeet uses collected information to sign users in, maintain approved sharing
-          agreements, show daily check-in status, send push reminders and alerts beginning 60
-          minutes after the chosen daily time, support pause controls, debug service issues, and
-          protect the service from misuse.
+          HardBeet receives information from the user, the user's device and operating system when
+          permission is granted, a selected authentication provider, and another HardBeet user who
+          sends or accepts an invitation. ElseBranch does not purchase personal information from
+          data brokers.
         </p>
         <p>
-          HardBeet does not use SMS for product notifications. Users may sign in with email OTP,
-          Apple, Google, or phone OTP where that option is enabled and delivery has been tested.
+          ElseBranch uses information to authenticate users, secure accounts, operate approved
+          agreements, display check-in status, attempt push delivery, apply settings, troubleshoot
+          reliability, prevent misuse, comply with law, and protect legal rights.
+        </p>
+        <p>
+          Where EEA, UK, or similar law requires a legal basis, ElseBranch relies on performance of
+          the service contract; legitimate interests in securing, debugging, and protecting the
+          service; consent where law requires it for an optional permission or choice; and legal
+          obligations or legal claims. Consent may be withdrawn through the relevant app or device
+          control without affecting earlier lawful processing.
+        </p>
+        <p>
+          Account credentials, a display name, and data needed for a chosen sharing agreement are
+          necessary for those features. Optional permissions, connections, private labels, and push
+          notifications may be declined, although the related feature may not work.
+        </p>
+        <p>
+          HardBeet does not use SMS for product notifications. Email OTP, email and password for
+          accounts configured with one, Apple, Google, or phone OTP may be offered where enabled
+          and tested.
         </p>
       </section>
 
       <section class="panel">
-        <h2>Service providers</h2>
+        <h2>How information is disclosed</h2>
         <p>
-          HardBeet uses Supabase for authentication, database storage, row-level access controls,
-          and backend functions. HardBeet uses Expo push notification services for push delivery.
-          Apple and Google platform services may also process authentication when chosen, app
-          installation, and operating-system notification information.
+          Information is disclosed to approved loved ones only as described above; to service
+          providers that operate HardBeet; when required by law or reasonably necessary to protect
+          users, the service, or legal rights; and as part of a merger, financing, acquisition,
+          reorganization, or asset sale subject to appropriate confidentiality and notice.
+        </p>
+        <p>
+          Supabase provides authentication, database storage, row-level access controls, and
+          backend functions. Expo provides push delivery. Apple and Google platform services may
+          process authentication, installation, and operating-system notification information.
+        </p>
+        <p>
+          ElseBranch does not sell personal information, does not share it for cross-context
+          behavioral advertising, and does not place targeted advertising in HardBeet.
         </p>
       </section>
 
       <section class="panel">
-        <h2>Push notification timing</h2>
+        <h2>International data transfers</h2>
+        <p>
+          ElseBranch and its service providers may process information in the United States and
+          other countries with different privacy laws. Where applicable law requires a transfer
+          safeguard, ElseBranch uses recognized safeguards available through provider terms or
+          data-processing agreements, such as the European Commission's Standard Contractual
+          Clauses, or another lawful mechanism. Contact legal@gethardbeet.com for information about
+          applicable safeguards.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Push notifications</h2>
+        <p>
+          Push delivery depends on each recipient's device settings, network, operating-system
+          behavior, and provider delivery. Notifications are best effort and are not emergency
+          alerts. Disabling notifications may prevent reminders or alerts from reaching that
+          device, but it does not create a check-in or change the status shown in the app.
+        </p>
         <p>
           Followers can choose normal delivery, silent delivery from 10 PM to 7 AM, or delivery
-          held until 7 AM in their saved timezone. These preferences can delay or silence a
-          follower alert and do not change the person's check-in status.
+          held until 7 AM in their saved timezone. These settings may delay or silence an alert.
         </p>
       </section>
 
       <section class="panel">
-        <h2>Retention and deletion</h2>
+        <h2>Retention</h2>
+        <ul>
+          <li>Account profile, settings, legal-acceptance records, connections, and check-ins are kept while the account is active, then deleted on account deletion unless limited retention is required for law, security, fraud prevention, or a legal claim.</li>
+          <li>An active push notification token is kept while registered and removed on sign-out, detected permission revocation, or account deletion.</li>
+          <li>Open invites remain available until accepted, canceled, or expired. Inactive invite and connection records stay with the active account to prevent reuse, preserve consent and revocation integrity, investigate abuse, and resolve disputes. They are deleted with the account unless a limited record must be retained for law, security, fraud prevention, or a legal claim.</li>
+          <li>Notification delivery and escalation records stay with the active account to operate, retry, secure, audit, and troubleshoot the service. They are deleted with the account subject to the same limited exceptions.</li>
+          <li>Supporting signals store only the latest state rather than continuous raw motion history and are deleted with the account.</li>
+          <li>Provider backups may retain deleted information for a limited backup cycle before being overwritten.</li>
+        </ul>
+        <p>When a retention purpose ends, ElseBranch deletes or de-identifies the information unless law requires continued retention.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Deletion and privacy rights</h2>
         <p>
-          HardBeet keeps account, connection, invite, check-in, setting, push notification token,
-          and notification records while an account is active and as needed to operate the service.
-          Some records may be retained for troubleshooting, security, legal, or abuse-prevention
-          reasons.
-        </p>
-        <p>
-          Users can start account deletion in the app from Settings &gt; Privacy and account &gt;
-          Delete account. Users who no longer have app access can use the public deletion page.
+          Users can delete an account in Settings &gt; Privacy and account &gt; Delete account, or
+          use the public deletion page if app access is unavailable.
         </p>
         <p><a href="./delete-account.html">Request account deletion</a></p>
+        <p>
+          Depending on location, users may request access, correction, deletion, restriction, or
+          portability; object to certain processing; withdraw consent; learn about recipients; and
+          complain to the privacy authority where they live or work. Send requests to
+          <a href="mailto:legal@gethardbeet.com">legal@gethardbeet.com</a>. ElseBranch may verify
+          identity before acting, and applicable rights and response periods vary by jurisdiction.
+        </p>
       </section>
 
       <section class="panel">
-        <h2>Children</h2>
-        <p>HardBeet is intended for adults and family caregivers. It is not directed to children under 13.</p>
+        <h2>Automated decisions and children</h2>
+        <p>
+          HardBeet does not create advertising profiles or make solely automated decisions with
+          legal or similarly significant effects. Reminder and alert timing follows the user's
+          settings and the agreed product rules.
+        </p>
+        <p>HardBeet is intended only for adults age 18 or older. ElseBranch does not knowingly offer accounts to children.</p>
       </section>
 
       <section class="panel">
-        <h2>Contact</h2>
-        <p>Privacy questions can be sent to <a href="mailto:legal@gethardbeet.com">legal@gethardbeet.com</a>.</p>
+        <h2>Security and changes</h2>
+        <p>
+          HardBeet uses authentication, row-level security, invite-based approved connections, and
+          limited data collection. No online service can guarantee perfect security.
+        </p>
+        <p>
+          ElseBranch may update this policy as the product, providers, or law changes. Material
+          changes will receive appropriate notice and a new acknowledgement when required.
+        </p>
       </section>
 
       <footer class="footer">
-        <a href="./index.html">HardBeet legal home</a>
+        HardBeet is operated by <a href="https://www.elsebranch.com">ElseBranch Inc.</a>
       </footer>
     </main>
   </body>

@@ -130,6 +130,15 @@ ul {
   background: #fff4f6;
 }
 
+.legal-emphasis {
+  border-width: 2px;
+  border-color: var(--ink);
+}
+
+.legal-emphasis p {
+  font-weight: 700;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
