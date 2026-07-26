@@ -54,6 +54,7 @@
         <h2>What HardBeet collects</h2>
         <ul>
           <li>Email address or phone number used for sign-in. HardBeet does not show either to approved connections.</li>
+          <li>Password authentication data for accounts configured to use a password. Supabase processes the password for authentication; HardBeet does not store or display the plaintext password.</li>
           <li>Apple or Google account identifier and authentication data when that sign-in method is chosen. HardBeet does not receive the user's Apple or Google password.</li>
           <li>First name or display name provided in the app.</li>
           <li>Expo push token for reminders and approved follower alerts.</li>
@@ -140,8 +141,9 @@
           notifications may be declined, although the related feature may not work.
         </p>
         <p>
-          HardBeet does not use SMS for product notifications. Email OTP, Apple, Google, or phone
-          OTP may be offered where enabled and tested.
+          HardBeet does not use SMS for product notifications. Email OTP, email and password for
+          accounts configured with one, Apple, Google, or phone OTP may be offered where enabled
+          and tested.
         </p>
       </section>
 
