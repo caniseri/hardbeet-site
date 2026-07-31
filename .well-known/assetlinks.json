@@ -7,7 +7,8 @@
       "namespace": "android_app",
       "package_name": "app.hardbeet.mobile",
       "sha256_cert_fingerprints": [
-        "C0:D2:8C:5C:AD:50:79:1C:46:93:59:D6:D9:34:50:08:BF:02:E3:7D:4F:A5:7C:2E:B6:CD:2F:4F:8A:87:1A:9D"
+        "C0:D2:8C:5C:AD:50:79:1C:46:93:59:D6:D9:34:50:08:BF:02:E3:7D:4F:A5:7C:2E:B6:CD:2F:4F:8A:87:1A:9D",
+        "56:2B:FA:31:9C:C9:EC:F5:A8:32:E4:EA:DF:65:CD:DD:D6:EA:E0:8A:EF:D1:A4:A5:9E:27:7C:0C:43:6A:8D:73"
       ]
     }
   }
