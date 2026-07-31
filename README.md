@@ -10,6 +10,6 @@ HardBeet repository.
 GitHub Pages publishes the root of `main`. The `CNAME` file binds the deployment
 to `gethardbeet.com`.
 
-Copyright 2026 Katsuko, Inc. All rights reserved. Public access to this
+Copyright 2026 ElseBranch Inc. All rights reserved. Public access to this
 repository does not grant permission to reuse its code, copy, artwork, or brand
 assets.

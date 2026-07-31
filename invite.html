@@ -38,9 +38,22 @@
         color: white; background: #e9163d; font-size: 17px; font-weight: 750;
         text-decoration: none;
       }
+      .stores {
+        display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px; margin-top: 12px;
+      }
+      .store {
+        min-height: 50px; display: flex; align-items: center; justify-content: center;
+        padding: 10px 14px; border: 1px solid #cfd2d8; border-radius: 8px;
+        color: #101114; background: white; font-size: 15px; font-weight: 700;
+        text-align: center; text-decoration: none;
+      }
       .fine { margin-top: 18px; font-size: 14px; }
       nav { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 16px; }
       nav a { color: #4f545d; }
+      @media (max-width: 390px) {
+        .stores { grid-template-columns: 1fr; }
+      }
     </style>
   </head>
   <body>
@@ -53,9 +66,21 @@
       </p>
       <div class="code" id="code" aria-live="polite">------</div>
       <a class="button" id="open" href="https://gethardbeet.com">Open HardBeet</a>
+      <div class="stores" aria-label="Install HardBeet">
+        <a class="store" href="https://apps.apple.com/app/id6790265422">
+          Download for iPhone
+        </a>
+        <a
+          class="store"
+          href="https://play.google.com/store/apps/details?id=app.hardbeet.mobile"
+        >
+          Download for Android
+        </a>
+      </div>
       <p class="fine">
-        If the app does not open, install HardBeet and enter the code shown above. A code never
-        shares location, messages, phone activity, photos, or health details.
+        If HardBeet is already installed, use Open HardBeet. Otherwise install it from your app
+        store, then enter the code shown above. A code never shares location, messages, phone
+        activity, photos, or health details.
       </p>
       <p class="fine">Need help? Email <a href="mailto:support@gethardbeet.com">support@gethardbeet.com</a>.</p>
       <p class="fine">
