@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "25MKAPNY5K.app.hardbeet.mobile",
+        "paths": [
+          "/invite",
+          "/invite/*",
+          "/invite.html"
+        ]
+      }
+    ]
+  }
+}
