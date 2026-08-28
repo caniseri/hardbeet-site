@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HardBeet — A calm daily check-in for people you love</title>
-    <meta name="description" content="HardBeet is a daily check-in aid for approved loved ones. One tap a day says “I'm here today” — with no live location and no private phone activity. Coming soon to iOS and Android.">
-    <meta property="og:title" content="HardBeet — A calm daily check-in for people you love">
-    <meta property="og:description" content="One tap a day says “I'm here today.” Approved loved ones see the agreed daily check-in details — never your live location or private phone activity. Coming soon to iOS and Android.">
+    <title>HardBeet — Know when to reach out, without watching someone</title>
+    <meta name="description" content="HardBeet is a daily check-in agreement between independent loved ones. One-way or mutual, with anonymous reach-out coordination and no location sharing.">
+    <meta property="og:title" content="HardBeet — Know when to reach out, without watching someone">
+    <meta property="og:description" content="A daily check-in agreement between independent loved ones. One-way or mutual. HardBeet never receives your device location.">
     <meta property="og:url" content="https://gethardbeet.com/">
     <meta property="og:type" content="website">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Crect width='1024' height='1024' rx='224' fill='%23E9163D'/%3E%3Cpath d='M614 123L256 553H481L389 922L788 410H563L614 123Z' fill='%23050608'/%3E%3C/svg%3E">
@@ -27,6 +27,8 @@
       }
 
       html { scroll-behavior: smooth; }
+
+      .lp section[id] { scroll-margin-top: 72px; }
 
       body {
         margin: 0;
@@ -110,15 +112,6 @@
 
       /* ---------- Hero ---------- */
       .lp-hero { position: relative; overflow: hidden; }
-
-      .lp-hero::before {
-        content: "";
-        position: absolute;
-        inset: auto -20% -55% -20%;
-        height: 90%;
-        background: radial-gradient(closest-side, var(--lp-mist), transparent 72%);
-        pointer-events: none;
-      }
 
       .lp-hero .wrap {
         position: relative;
@@ -372,9 +365,114 @@
         .lp-phone.front { order: -1; }
       }
 
+      @media (max-width: 720px) {
+        .lp-hero .wrap {
+          padding: 32px 0 36px;
+          gap: 24px;
+        }
+
+        .lp-lede {
+          margin-bottom: 22px;
+          font-size: 16px;
+        }
+
+        .lp-phones {
+          height: 156px;
+          overflow: hidden;
+          align-items: flex-start;
+        }
+
+        .lp-phone.back { display: none; }
+
+        .lp-phone.front {
+          flex: none;
+          transform: scale(0.72);
+          transform-origin: top center;
+        }
+      }
+
       /* ---------- Sections ---------- */
       .lp-section { padding: 84px 0; }
       .lp-section.alt { background: var(--lp-card); border-block: 1px solid var(--lp-line); }
+
+      /* ---------- Current app preview ---------- */
+      .lp-preview {
+        padding: 84px 0 92px;
+        color: #FFFFFF;
+        background: var(--lp-ink);
+        border-block: 1px solid #2D2D32;
+      }
+
+      .lp-preview .lp-kicker { color: #FF5A75; }
+
+      .lp-preview h2 {
+        margin: 0 0 14px;
+        font-size: clamp(28px, 3.6vw, 40px);
+        line-height: 1.12;
+        letter-spacing: 0;
+        font-weight: 800;
+      }
+
+      .lp-preview .lp-sub { color: #B8BBC3; }
+
+      .lp-screen-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 34px;
+        align-items: start;
+      }
+
+      .lp-screen-figure {
+        min-width: 0;
+        margin: 0;
+      }
+
+      .lp-screen-shell {
+        width: min(100%, 300px);
+        aspect-ratio: 880 / 1912;
+        margin: 0 auto;
+        overflow: hidden;
+        background: var(--lp-paper);
+        border: 1px solid #36363D;
+        border-radius: 30px;
+        box-shadow: 0 24px 56px rgba(0, 0, 0, 0.3);
+      }
+
+      .lp-screen-shell img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .lp-screen-figure figcaption {
+        width: min(100%, 300px);
+        margin: 18px auto 0;
+      }
+
+      .lp-screen-figure h3 {
+        margin: 0 0 6px;
+        font-size: 18px;
+        letter-spacing: 0;
+        font-weight: 800;
+      }
+
+      .lp-screen-figure p {
+        margin: 0;
+        color: #B8BBC3;
+        font-size: 14px;
+      }
+
+      @media (max-width: 900px) {
+        .lp-screen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .lp-screen-figure:last-child:nth-child(odd) { grid-column: 1 / -1; }
+      }
+
+      @media (max-width: 620px) {
+        .lp-preview { padding: 64px 0 72px; }
+        .lp-screen-grid { grid-template-columns: 1fr; gap: 46px; }
+        .lp-screen-figure:last-child:nth-child(odd) { grid-column: auto; }
+      }
 
       .lp-kicker {
         font-size: 13px;
@@ -444,6 +542,49 @@
         margin: 0;
         color: var(--lp-muted);
         font-size: 15px;
+      }
+
+      .lp-global-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 36px;
+        margin: 6px 0 34px;
+        padding-top: 28px;
+        border-top: 1px solid var(--lp-line);
+      }
+
+      .lp-global-grid h3 {
+        margin: 0 0 8px;
+        font-size: 18.5px;
+        font-weight: 800;
+      }
+
+      .lp-global-grid p,
+      .lp-language-note {
+        margin: 0;
+        color: var(--lp-muted);
+        font-size: 15px;
+      }
+
+      .lp-language-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        margin: 0 0 18px;
+        padding: 0;
+        border-top: 1px solid var(--lp-line);
+      }
+
+      .lp-language-list li {
+        padding: 12px 8px 12px 0;
+        border-bottom: 1px solid var(--lp-line);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      @media (max-width: 720px) {
+        .lp-global-grid { grid-template-columns: 1fr; gap: 24px; }
+        .lp-language-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       }
 
       /* ---------- Shared / never shared ---------- */
@@ -604,6 +745,8 @@
         </a>
         <nav class="lp-nav" aria-label="Main">
           <a href="#how">How it works</a>
+          <a href="#preview">App preview</a>
+          <a href="#languages">Languages</a>
           <a href="#approach">Privacy</a>
           <a href="#faq">FAQ</a>
           <a class="lp-cta" href="#download">Get the app</a>
@@ -615,13 +758,13 @@
       <section class="lp-hero">
         <div class="wrap">
           <div>
-            <span class="lp-eyebrow">Coming soon · iOS &amp; Android</span>
-            <h1>One tap a day says <em>“I'm here.”</em></h1>
+            <span class="lp-eyebrow">Preparing for release · iOS &amp; Android</span>
+            <h1>Know when to reach out, <em>without watching someone.</em></h1>
             <p class="lp-lede">
-              HardBeet is a daily check-in aid for approved loved ones. Check in
-              once a day; the people you approve see the agreed daily check-in
-              details. It cannot see your messages, read health details, or
-              share live location.
+              A daily check-in agreement between independent loved ones. Share
+              one way or with each other, coordinate who plans to reach out,
+              and keep location out of it. HardBeet never receives your device
+              location.
             </p>
             <div class="lp-badges" aria-label="App store availability">
               <span class="lp-badge" aria-disabled="true">
@@ -633,7 +776,7 @@
                 <span class="lines"><small>Coming soon on</small><span>Google Play</span></span>
               </span>
               <p class="lp-soon-note">
-                Launching soon. Want a note when it's live? Email
+                Free at launch. Want a note when it's live? Email
                 <a href="mailto:support@gethardbeet.com">support@gethardbeet.com</a>.
               </p>
             </div>
@@ -665,7 +808,7 @@
                     </span>
                     <span class="lp-pill ok">✓ Checked in today</span>
                   </div>
-                  <p class="lp-next">Checked in 8:12 AM his time · 2:12 PM for you.</p>
+                  <p class="lp-next">Checked in at 8:12 AM their local time.</p>
                 </div>
               </div>
             </div>
@@ -680,7 +823,7 @@
                 <div class="lp-card">
                   <div class="row">
                     <h4>My check-in</h4>
-                    <span class="lp-chip">Daily time 2:00 PM</span>
+                    <span class="lp-chip">Reminder 2:00 PM</span>
                   </div>
                   <div class="lp-checkin-btn">I'm here today</div>
                   <p class="lp-caption">
@@ -694,7 +837,7 @@
                     <h4>Sharing agreement</h4>
                     <span class="lp-chip">Pause anytime</span>
                   </div>
-                  <p class="lp-next">You choose who sees your check-in — and you can stop sharing whenever you want.</p>
+                  <p class="lp-next">You each choose what to share, and either person can pause or stop their own direction.</p>
                 </div>
               </div>
             </div>
@@ -702,10 +845,71 @@
         </div>
       </section>
 
+      <section class="lp-preview" id="preview">
+        <div class="wrap">
+          <p class="lp-kicker">Inside HardBeet</p>
+          <h2>A clear view of each day.</h2>
+          <p class="lp-sub">
+            The same calm daily check-in flow on iPhone and Android, with large
+            controls, plain language, and explicit sharing choices.
+          </p>
+          <div class="lp-screen-grid">
+            <figure class="lp-screen-figure">
+              <div class="lp-screen-shell">
+                <img
+                  src="./assets/app-my-checkin.png"
+                  alt="HardBeet My check-in screen showing a completed daily check-in and its recorded time"
+                  width="880"
+                  height="1912"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </div>
+              <figcaption>
+                <h3>One clear daily action</h3>
+                <p>A completed check-in is easy to recognize and time-stamped.</p>
+              </figcaption>
+            </figure>
+            <figure class="lp-screen-figure">
+              <div class="lp-screen-shell">
+                <img
+                  src="./assets/app-loved-ones.png"
+                  alt="HardBeet Loved ones screen showing checked-in, overdue, and paused daily check-in states"
+                  width="880"
+                  height="1912"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </div>
+              <figcaption>
+                <h3>Each person at a glance</h3>
+                <p>Check-in status, local time, and one calm suggested next step.</p>
+              </figcaption>
+            </figure>
+            <figure class="lp-screen-figure">
+              <div class="lp-screen-shell">
+                <img
+                  src="./assets/app-connect.png"
+                  alt="HardBeet Add someone screen with one-way and mutual daily check-in sharing choices"
+                  width="880"
+                  height="1912"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </div>
+              <figcaption>
+                <h3>Sharing starts with agreement</h3>
+                <p>Choose one-way or mutual sharing before creating an invite.</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       <section class="lp-section" id="how">
         <div class="wrap">
           <p class="lp-kicker">How it works</p>
-          <h2>A calm routine, not a monitor.</h2>
+          <h2>A clear agreement, not a monitor.</h2>
           <p class="lp-sub">
             HardBeet keeps a daily touchpoint between independent adults and the
             people who care about them — on clear, agreed terms.
@@ -723,23 +927,76 @@
               <span class="lp-step-num">2</span>
               <h3>Invite people you approve</h3>
               <p>
-                Share an invite code with someone you trust. They review and
-                accept a plain-language agreement before they see anything.
+                Share an invite link or fallback code with someone you trust.
+                The agreement shows who shares with whom, what is visible,
+                daily timing, alert behavior, and how either person can pause
+                or leave. Sharing can be one-way or mutual.
               </p>
             </div>
             <div class="lp-tile">
               <span class="lp-step-num">3</span>
               <h3>They see today's signal</h3>
               <p>
-                Approved loved ones see whether today's check-in happened — shown
-                in your time zone and theirs. Nothing beyond the agreement is shared.
+                Approved loved ones see whether today's check-in happened. Times
+                are labeled in the check-in person's local time. Nothing beyond
+                the agreement is shared.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="lp-section alt" id="late">
+      <section class="lp-section alt" id="languages">
+        <div class="wrap">
+          <p class="lp-kicker">Across borders</p>
+          <h2>Use HardBeet in the language of your phone.</h2>
+          <p class="lp-sub">
+            HardBeet starts with your phone language when it is supported. You
+            can choose another language at any time without changing the
+            language of your device.
+          </p>
+          <div class="lp-global-grid">
+            <div>
+              <h3>Built for families in different countries</h3>
+              <p>
+                Each person's check-in and reminder times stay labeled in that
+                person's own local time, which keeps the daily routine clear
+                without sharing where anyone is.
+              </p>
+            </div>
+            <div>
+              <h3>Simple email sign-in</h3>
+              <p>
+                HardBeet sends a six-digit code by email, so there is no password
+                to create or remember. Your email address is not shown to people
+                you connect with.
+              </p>
+            </div>
+          </div>
+          <ul class="lp-language-list" aria-label="In-app languages">
+            <li>Dutch</li>
+            <li>English</li>
+            <li>Filipino</li>
+            <li>French</li>
+            <li>German</li>
+            <li>Hindi</li>
+            <li>Indonesian</li>
+            <li>Korean</li>
+            <li>Simplified Chinese</li>
+            <li>Spanish</li>
+            <li>Thai</li>
+            <li>Turkish</li>
+            <li>Urdu</li>
+            <li>Vietnamese</li>
+          </ul>
+          <p class="lp-language-note">
+            The Privacy Policy, Terms of Service, and account-deletion pages are
+            currently provided in English.
+          </p>
+        </div>
+      </section>
+
+      <section class="lp-section" id="late">
         <div class="wrap">
           <p class="lp-kicker">When a day slips</p>
           <h2>Gentle first. Always.</h2>
@@ -765,18 +1022,28 @@
               </p>
             </div>
             <div class="lp-tile">
+              <h3>One person can plan to reach out</h3>
+              <p>
+                After the one-hour grace period, one approved follower can say
+                “I'll reach out.” Other eligible followers see an anonymous
+                plan for up to 30 minutes, reducing duplicate calls without
+                revealing who created it.
+              </p>
+            </div>
+            <div class="lp-tile">
               <h3>Pause when you mean to be quiet</h3>
               <p>
-                Traveling, resting, or intentionally offline? Pause sharing for
-                24 hours, 7 days, or until you turn it back on. No missed
-                check-in notifications are sent while paused.
+                Traveling, resting, or intentionally offline? Pause one
+                agreement for 24 hours or 7 days, or pause all sharing. Other
+                agreements stay independent, and no missed-check-in notification
+                is sent for a paused direction.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="lp-section" id="approach">
+      <section class="lp-section alt" id="approach">
         <div class="wrap">
           <p class="lp-kicker">Private by design</p>
           <h2>They see a small daily signal. Not your life.</h2>
@@ -789,24 +1056,26 @@
               <span class="lp-tag shared">Shared</span>
               <ul class="lp-list">
                 <li><span class="ico yes">✓</span>Whether your daily check-in happened today</li>
-                <li><span class="ico yes">✓</span>Your chosen daily time, shown in both time zones</li>
+                <li><span class="ico yes">✓</span>Your chosen daily reminder time, labeled as your local time</li>
                 <li><span class="ico yes">✓</span>When sharing is paused, so no one is surprised</li>
+                <li><span class="ico yes">✓</span>An anonymous temporary reach-out plan after an eligible missed check-in</li>
               </ul>
             </div>
             <div class="lp-tile">
               <span class="lp-tag never">Never shared</span>
               <ul class="lp-list">
-                <li><span class="ico no">✕</span>Live location — HardBeet cannot share live location</li>
+                <li><span class="ico no">✕</span>Device location — HardBeet never requests or receives it</li>
                 <li><span class="ico no">✕</span>Messages, calls, photos, contacts, or app history</li>
                 <li><span class="ico no">✕</span>Health details of any kind</li>
                 <li><span class="ico no">✕</span>Private phone activity — only your tap creates a check-in</li>
+                <li><span class="ico no">✕</span>Who created another follower's plan, or any contact or safety outcome</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="lp-section alt" id="not">
+      <section class="lp-section" id="not">
         <div class="wrap">
           <div class="lp-not">
             <h3>What HardBeet is not</h3>
@@ -821,7 +1090,7 @@
         </div>
       </section>
 
-      <section class="lp-section" id="faq">
+      <section class="lp-section alt" id="faq">
         <div class="wrap">
           <p class="lp-kicker">FAQ</p>
           <h2>Fair questions.</h2>
@@ -829,9 +1098,9 @@
             <details>
               <summary>Does HardBeet share my location?</summary>
               <p>
-                No. HardBeet has no live location feature at all. Approved
-                loved ones see the agreed check-in, timing, and pause details
-                described above. They never see live location or private phone activity.
+                No. HardBeet never requests location permission and never
+                receives your device location. Approved loved ones see only
+                the check-in agreement details described above.
               </p>
             </details>
             <details>
@@ -842,6 +1111,15 @@
                 notification to approved loved ones who have notifications
                 available. Notifications are best effort and should never
                 replace real-world contact.
+              </p>
+            </details>
+            <details>
+              <summary>What does “I'll reach out” tell other followers?</summary>
+              <p>
+                Only that another approved follower has a temporary plan and
+                when it expires. HardBeet does not identify that follower or
+                record who was contacted, messages, delivery, replies,
+                resolution, or whether anyone is safe.
               </p>
             </details>
             <details>
@@ -860,6 +1138,23 @@
               </p>
             </details>
             <details>
+              <summary>What languages does HardBeet support?</summary>
+              <p>
+                The app offers Dutch, English, Filipino, French, German, Hindi,
+                Indonesian, Korean, Simplified Chinese, Spanish, Thai, Turkish,
+                Urdu, and Vietnamese. It follows your phone language by default,
+                and you can change it inside HardBeet. Legal documents are
+                currently provided in English.
+              </p>
+            </details>
+            <details>
+              <summary>Will HardBeet be free?</summary>
+              <p>
+                Yes. HardBeet will be free at launch while we learn from early
+                users and improve the daily check-in experience.
+              </p>
+            </details>
+            <details>
               <summary>How do I delete my account?</summary>
               <p>
                 From Settings → Privacy and account → Delete account, or by
@@ -875,9 +1170,9 @@
       <section class="lp-download" id="download">
         <div class="wrap">
           <p class="lp-kicker">Get HardBeet</p>
-          <h2>Coming soon to both stores.</h2>
+          <h2>In final testing for both stores.</h2>
           <p class="lp-sub">
-            HardBeet is launching soon on iOS and Android. Email
+            HardBeet will be free at launch on iOS and Android. Email
             <a href="mailto:support@gethardbeet.com">support@gethardbeet.com</a>
             and we'll let you know the moment it's live.
           </p>
