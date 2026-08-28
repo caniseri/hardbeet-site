@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="hardbeet-legal-document" content="privacy">
-    <meta name="hardbeet-legal-version" content="2026-07-31-v1">
+    <meta name="hardbeet-legal-version" content="2026-08-27-v1">
     <meta name="hardbeet-legal-locale" content="en">
     <title>HardBeet Privacy Policy</title>
     <link rel="stylesheet" href="./styles.css">
@@ -25,7 +25,7 @@
 
       <section class="hero">
         <h1>Privacy Policy</h1>
-        <p class="lede">Last updated: July 31, 2026</p>
+        <p class="lede">Last updated: August 27, 2026</p>
       </section>
 
       <section class="panel">
@@ -48,8 +48,8 @@
       <section class="panel callout">
         <h2>Product boundary</h2>
         <p>
-          HardBeet is a daily check-in aid for people who choose to share a simple check-in status
-          with approved loved ones. HardBeet is not an emergency response service, medical monitor,
+          HardBeet is a daily check-in agreement for independent loved ones who choose what to
+          share with each other. HardBeet is not an emergency response service, medical monitor,
           location tracker, or proof that someone is safe.
         </p>
       </section>
@@ -66,9 +66,10 @@
           <li>Supporting signal timestamps and labels, such as app-open updates, coarse motion-triggered attempts, battery-state attempts, and background-task attempts.</li>
           <li>Approved connection records and optional private relationship labels a user adds to their own list.</li>
           <li>Invite codes and invite status, including creation, acceptance, cancellation, and expiry.</li>
-          <li>Mutual-invitation consent version, language, timestamp, and connection record.</li>
+          <li>For each sharing direction, authorization records such as the person who approved it, consent timestamp, statement version and language when available, and a non-secret receipt reference shown to that person. Older connections may initially have only an activation record until the sharing person confirms the current statement.</li>
+          <li>Temporary reach-out-plan records after an eligible missed check-in, including the account and exact sharing direction that created the plan, the missed-check-in local date, and creation and expiration timestamps. A plan lasts no more than 30 minutes and contains no recipient, message, delivery, reply, resolution, or safety outcome.</li>
           <li>Product-consent, Terms of Service, and Privacy Policy versions, timestamps, and the language of the legal documents shown. The current legal documents are provided in English.</li>
-          <li>Reminder time, timezone, language, pause, quiet-hours, setup, and alert settings.</li>
+          <li>Reminder time, timezone, language, global and relationship-specific pause, quiet-hours, setup, and alert settings.</li>
           <li>Notification delivery records, including whether delivery was attempted, accepted, retried, skipped, or failed.</li>
           <li>Device platform information needed for push notifications and troubleshooting.</li>
         </ul>
@@ -96,6 +97,7 @@
 
       <section class="panel">
         <h2>What HardBeet does not collect</h2>
+        <p>HardBeet does not request location permission and never receives device location.</p>
         <ul>
           <li>Live location or location history.</li>
           <li>Messages, call logs, photos, contacts, browser history, app names, or screen content.</li>
@@ -108,9 +110,16 @@
       <section class="panel">
         <h2>What approved loved ones can see</h2>
         <p>
-          Approved loved ones can see whether the person checked in today, the most recent daily
-          check-in time, whether sharing is paused, and suggested next steps such as wait, call,
-          text, or ask the person to open HardBeet.
+          Approved loved ones can see whether and when the person checked in, the person's reminder
+          and follower-alert timing while that sharing direction is active, whether that direction
+          is paused, and suggested next steps such as wait, call, text, or ask the person to open
+          HardBeet.
+        </p>
+        <p>
+          After the one-hour grace period for an eligible missed check-in, currently eligible
+          approved followers can see whether another approved follower has an active temporary
+          reach-out plan and when it expires. They do not see who created the plan. A plan does not
+          indicate that contact occurred or that anyone is safe.
         </p>
         <p>
           They cannot see email addresses, phone numbers, sign-in providers, supporting signals,
@@ -129,8 +138,9 @@
         </p>
         <p>
           ElseBranch uses information to authenticate users, secure accounts, operate approved
-          agreements, display check-in status, attempt push delivery, apply settings, troubleshoot
-          reliability, prevent misuse, comply with law, and protect legal rights.
+          agreements, display check-in status, coordinate temporary anonymous reach-out plans,
+          attempt push delivery, apply settings, troubleshoot reliability, prevent misuse, comply
+          with law, and protect legal rights.
         </p>
         <p>
           Where EEA, UK, or similar law requires a legal basis, ElseBranch relies on performance of
@@ -197,12 +207,30 @@
       </section>
 
       <section class="panel">
+        <h2>Reach-out plans and native sharing</h2>
+        <p>
+          After an eligible missed check-in, one approved follower may create a temporary reach-out
+          plan. The plan is active for no more than 30 minutes. Other followers who are currently
+          eligible under the same person's approved sharing agreements see only that a plan exists
+          and when it expires, not who created it. Only the creator can withdraw the plan. A follower
+          cannot create another person's check-in or mark that person safe.
+        </p>
+        <p>
+          The follower may then open the operating system's share menu with generic pre-filled text.
+          The selected app controls editing and sending. HardBeet does not request Contacts, SMS,
+          Phone, or Call Log access for this action and does not receive or store the selected
+          recipient, edited or sent message, delivery status, reply, resolution, or safety outcome.
+        </p>
+      </section>
+
+      <section class="panel">
         <h2>Retention</h2>
         <ul>
           <li>Account profile, settings, legal-acceptance records, connections, and check-ins are kept while the account is active, then deleted on account deletion unless limited retention is required for law, security, fraud prevention, or a legal claim.</li>
           <li>An active push notification token is kept while registered and removed on sign-out, detected permission revocation, or account deletion.</li>
           <li>Open invites remain available until accepted, canceled, or expired. Inactive invite and connection records stay with the active account to prevent reuse, preserve consent and revocation integrity, investigate abuse, and resolve disputes. They are deleted with the account unless a limited record must be retained for law, security, fraud prevention, or a legal claim.</li>
           <li>Notification delivery and escalation records stay with the active account to operate, retry, secure, audit, and troubleshoot the service. They are deleted with the account subject to the same limited exceptions.</li>
+          <li>A reach-out plan stops being active and visible after no more than 30 minutes. It is deleted when the relevant daily check-in is recorded, that sharing direction is paused or removed, relevant eligibility settings or legal acceptance change, or the account is deleted. An expired record may remain in restricted operational storage until routine cleanup or replacement, but it is not shown as an active plan.</li>
           <li>Supporting signals store only the latest state rather than continuous raw motion history and are deleted with the account.</li>
           <li>Provider backups may retain deleted information for a limited backup cycle before being overwritten.</li>
         </ul>
