@@ -6,6 +6,8 @@
     <meta name="theme-color" content="#e9163d" />
     <title>HardBeet invitation</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script src="./invite-locales.js" defer></script>
+    <script src="./invite.js" defer></script>
     <style>
       * { box-sizing: border-box; }
       body {
@@ -25,12 +27,13 @@
         color: white; background: #e9163d; border-radius: 8px; font-weight: 900;
       }
       h1 { margin: 0 0 12px; font-size: 32px; line-height: 1.15; letter-spacing: 0; }
+      h2 { margin-top: 28px; }
       p { color: #4f545d; font-size: 17px; line-height: 1.55; }
       .code {
         margin: 28px 0 18px; padding: 18px; text-align: center;
         border: 1px solid #d9dce2; border-radius: 8px; background: white;
         font: 800 30px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
-        letter-spacing: 3px;
+        letter-spacing: 0; direction: ltr; user-select: all; overflow-wrap: anywhere;
       }
       .button {
         min-height: 54px; display: flex; align-items: center; justify-content: center;
@@ -51,6 +54,12 @@
       .fine { margin-top: 18px; font-size: 14px; }
       nav { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 16px; }
       nav a { color: #4f545d; }
+      select, button { font: inherit; }
+      select { min-height: 48px; max-width: 100%; margin: 8px 0 24px; padding: 8px; }
+      .button { border: 0; text-align: center; }
+      .button[aria-disabled="true"], button:disabled { background: #e5e7eb; color: #4f545d; }
+      #copy { width: 100%; margin: 0 0 12px; cursor: pointer; }
+      [dir="rtl"] .brand { direction: ltr; }
       @media (max-width: 390px) {
         .stores { grid-template-columns: 1fr; }
       }
@@ -58,30 +67,34 @@
   </head>
   <body>
     <main>
-      <div class="brand"><span class="mark">H</span><strong>HardBeet</strong></div>
-      <h1>Review a daily check-in invitation</h1>
-      <p>
+      <div class="brand"><svg class="mark" width="42" height="42" viewBox="0 0 1024 1024" aria-hidden="true"><rect width="1024" height="1024" fill="#E9163D"/><path d="M614 123L256 553H481L389 922L788 410H563L614 123Z" fill="#050608"/></svg><strong>HardBeet</strong></div>
+      <label for="language" data-copy="language">Language</label>
+      <select id="language"></select>
+      <h1 data-copy="title">Review your invitation</h1>
+      <p data-copy="intro">
         Open HardBeet to see the person's name and exactly who will share a daily check-in
         before you accept anything.
       </p>
       <div class="code" id="code" aria-live="polite">------</div>
-      <a class="button" id="open" href="https://gethardbeet.com">Open HardBeet</a>
+      <button class="store" id="copy" data-copy="copy" disabled>Copy invitation code</button>
+      <p id="status" role="status" aria-live="polite"></p>
+      <h2 data-copy="install">Find HardBeet in your app store</h2>
+      <p data-copy="availability">HardBeet is in final testing. Store availability may vary; existing testers can open their installed app.</p>
       <div class="stores" aria-label="Install HardBeet">
         <a class="store" href="https://apps.apple.com/app/id6790265422">
-          Download for iPhone
+          App Store · iPhone
         </a>
         <a
           class="store"
           href="https://play.google.com/store/apps/details?id=app.hardbeet.mobile"
         >
-          Download for Android
+          Google Play · Android
         </a>
       </div>
-      <p class="fine">
-        If HardBeet is already installed, use Open HardBeet. Otherwise install it from your app
-        store, then enter the code shown above. A code never shares location, messages, phone
-        activity, photos, or health details.
-      </p>
+      <p data-copy="instructions">Copy this invitation code before installing. After installation, return here and open HardBeet, or enter the code after signing in. This is not your emailed sign-in code.</p>
+      <a class="button" id="open" data-copy="open" aria-disabled="true">Open HardBeet</a>
+      <noscript><p>Please open HardBeet and enter the invitation code from your message. This page needs JavaScript to read the code from the link.</p></noscript>
+      <p class="fine" data-copy="legal">Legal pages are currently in English.</p>
       <p class="fine">Need help? Email <a href="mailto:support@gethardbeet.com">support@gethardbeet.com</a>.</p>
       <p class="fine">
         HardBeet is operated by
@@ -94,13 +107,5 @@
         <a href="./delete-account.html">Delete account</a>
       </nav>
     </main>
-    <script>
-      const token = (new URLSearchParams(window.location.search).get("token") || "")
-        .toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 10);
-      if (token.length >= 6) {
-        document.getElementById("code").textContent = token;
-        document.getElementById("open").href = `hardbeet://invite?token=${encodeURIComponent(token)}`;
-      }
-    </script>
   </body>
 </html>
