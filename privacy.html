@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="hardbeet-legal-document" content="privacy">
-    <meta name="hardbeet-legal-version" content="2026-08-27-v1">
+    <meta name="hardbeet-legal-version" content="2026-09-07-v1">
     <meta name="hardbeet-legal-locale" content="en">
     <title>HardBeet Privacy Policy</title>
     <link rel="stylesheet" href="./styles.css">
@@ -25,7 +25,7 @@
 
       <section class="hero">
         <h1>Privacy Policy</h1>
-        <p class="lede">Last updated: August 27, 2026</p>
+        <p class="lede">Last updated: September 7, 2026</p>
       </section>
 
       <section class="panel">
@@ -59,14 +59,15 @@
           <li>First name or display name provided in the app.</li>
           <li>Expo push token for reminders and approved follower alerts.</li>
           <li>Daily check-in timestamps, including the most recent check-in time.</li>
-          <li>Supporting signal timestamps and labels, such as app-open updates, coarse motion-triggered attempts, battery-state attempts, and background-task attempts.</li>
+          <li>Supporting signal timestamps and labels may remain from older app versions. The new release no longer collects app-open, motion, battery, or background-task signals.</li>
           <li>Approved connection records and optional private relationship labels a user adds to their own list.</li>
+          <li>When someone stops sharing, a dated notice with their first name may remain visible to the former follower for up to 30 days. Reconnecting clears the notice; account deletion removes the associated record.</li>
           <li>Invite codes and invite status, including creation, acceptance, cancellation, and expiry.</li>
           <li>For each sharing direction, authorization records such as the person who approved it, consent timestamp, statement version and language when available, and a non-secret receipt reference shown to that person. Older connections may initially have only an activation record until the sharing person confirms the current statement.</li>
           <li>Temporary reach-out-plan records after an eligible missed check-in, including the account and exact sharing direction that created the plan, the missed-check-in local date, and creation and expiration timestamps. A plan lasts no more than 30 minutes and contains no recipient, message, delivery, reply, resolution, or safety outcome.</li>
           <li>Product-consent, Terms of Service, and Privacy Policy versions, timestamps, and the language of the legal documents shown. The current legal documents are provided in English.</li>
           <li>Reminder time, timezone, language, global and relationship-specific pause, quiet-hours, setup, and alert settings.</li>
-          <li>Notification delivery records, including whether delivery was attempted, accepted, retried, skipped, or failed.</li>
+          <li>Notification delivery records, including attempts, provider tickets and receipts, retries and failures. A hash of the attempted push token is held while a receipt is pending, then cleared. Provider acceptance is not proof that a phone displayed a notification or that a person read it.</li>
           <li>Device platform information needed for push notifications and troubleshooting.</li>
         </ul>
         <p>
@@ -85,9 +86,9 @@
       <section class="panel">
         <h2>Manual check-ins and private diagnostics</h2>
         <p>
-          Only an explicit tap on I'm here today creates a daily check-in. App opens, coarse motion,
-          battery changes, and background attempts are private, best-effort diagnostics. They do
-          not create a check-in, change loved-one status, or appear to approved loved ones.
+          Only an explicit tap on I'm here today creates a daily check-in. Passive diagnostic
+          collection has been retired in the new release. Historical diagnostics from older
+          versions never create a check-in, change loved-one status, or appear to loved ones.
         </p>
       </section>
 
