@@ -11,7 +11,6 @@ const HardBeetInviteCopy = {
     "install": "Find HardBeet in your app store",
     "instructions": "Copy this invitation code before installing. After installation, return here and open HardBeet, or enter the code after signing in. This is not your emailed sign-in code.",
     "availability": "HardBeet is in final testing. Store availability may vary; existing testers can open their installed app.",
-    "legal": "Legal pages are currently in English.",
     "language": "Language"
   },
   "nl": {
@@ -25,7 +24,6 @@ const HardBeetInviteCopy = {
     "install": "Zoek HardBeet in je appwinkel",
     "instructions": "Kopieer deze uitnodigingscode vóór het installeren. Keer daarna hier terug en open HardBeet, of voer de code na het inloggen in. Dit is niet de inlogcode uit je e-mail.",
     "availability": "HardBeet wordt nog getest. Beschikbaarheid kan per appwinkel verschillen; testers kunnen hun geïnstalleerde app openen.",
-    "legal": "De juridische pagina's zijn momenteel in het Engels.",
     "language": "Taal"
   },
   "tr": {
@@ -39,7 +37,6 @@ const HardBeetInviteCopy = {
     "install": "Uygulama mağazanızda HardBeet'i bulun",
     "instructions": "Yüklemeden önce bu davet kodunu kopyalayın. Yükledikten sonra buraya dönüp HardBeet'i açın veya giriş yaptıktan sonra kodu girin. Bu, e-postayla gelen giriş kodunuz değildir.",
     "availability": "HardBeet son test aşamasında. Mağazalarda kullanılabilirlik değişebilir; mevcut test kullanıcıları yüklü uygulamayı açabilir.",
-    "legal": "Yasal sayfalar şu anda İngilizcedir.",
     "language": "Dil"
   },
   "de": {
@@ -53,7 +50,6 @@ const HardBeetInviteCopy = {
     "install": "HardBeet im App-Store finden",
     "instructions": "Kopiere diesen Einladungscode vor der Installation. Kehre danach hierher zurück und öffne HardBeet oder gib den Code nach der Anmeldung ein. Dies ist nicht dein Anmeldecode aus der E-Mail.",
     "availability": "HardBeet wird abschließend getestet. Die Verfügbarkeit im Store kann variieren; Tester können ihre installierte App öffnen.",
-    "legal": "Die rechtlichen Seiten sind derzeit auf Englisch.",
     "language": "Sprache"
   },
   "fr": {
@@ -67,7 +63,6 @@ const HardBeetInviteCopy = {
     "install": "Trouver HardBeet dans votre boutique d'applications",
     "instructions": "Copiez ce code d'invitation avant l'installation. Ensuite, revenez ici et ouvrez HardBeet, ou saisissez le code après la connexion. Ce n'est pas le code de connexion reçu par e-mail.",
     "availability": "HardBeet est en phase finale de test. La disponibilité peut varier ; les testeurs peuvent ouvrir leur application installée.",
-    "legal": "Les pages juridiques sont actuellement en anglais.",
     "language": "Langue"
   },
   "es": {
@@ -81,7 +76,6 @@ const HardBeetInviteCopy = {
     "install": "Busca HardBeet en tu tienda de aplicaciones",
     "instructions": "Copia este código de invitación antes de instalar. Después, vuelve aquí y abre HardBeet, o introduce el código tras iniciar sesión. No es el código de acceso que recibes por correo.",
     "availability": "HardBeet está en las pruebas finales. La disponibilidad puede variar; los participantes pueden abrir la aplicación instalada.",
-    "legal": "Las páginas legales están actualmente en inglés.",
     "language": "Idioma"
   },
   "fil": {
@@ -95,7 +89,6 @@ const HardBeetInviteCopy = {
     "install": "Hanapin ang HardBeet sa iyong app store",
     "instructions": "Kopyahin ang code ng imbitasyon bago mag-install. Pagkatapos, bumalik dito at buksan ang HardBeet, o ilagay ang code matapos mag-sign in. Hindi ito ang sign-in code na ipinadala sa email.",
     "availability": "Nasa huling yugto ng pagsubok ang HardBeet. Maaaring mag-iba ang availability sa store; mabubuksan ng mga tester ang naka-install nilang app.",
-    "legal": "Nasa Ingles pa ang mga legal na pahina.",
     "language": "Wika"
   },
   "hi": {
@@ -109,7 +102,6 @@ const HardBeetInviteCopy = {
     "install": "अपने ऐप स्टोर में HardBeet खोजें",
     "instructions": "इंस्टॉल करने से पहले यह निमंत्रण कोड कॉपी करें। फिर यहाँ लौटकर HardBeet खोलें, या साइन इन के बाद कोड दर्ज करें। यह ईमेल से मिला साइन-इन कोड नहीं है।",
     "availability": "HardBeet की अंतिम जाँच चल रही है। स्टोर में उपलब्धता अलग हो सकती है; परीक्षक अपना इंस्टॉल किया हुआ ऐप खोल सकते हैं।",
-    "legal": "कानूनी पेज अभी अंग्रेज़ी में हैं।",
     "language": "भाषा"
   },
   "id": {
@@ -123,7 +115,6 @@ const HardBeetInviteCopy = {
     "install": "Temukan HardBeet di toko aplikasi Anda",
     "instructions": "Salin kode undangan sebelum memasang aplikasi. Setelah itu, kembali ke sini dan buka HardBeet, atau masukkan kode setelah masuk. Ini bukan kode masuk dari email.",
     "availability": "HardBeet sedang menjalani pengujian akhir. Ketersediaan di toko dapat berbeda; penguji dapat membuka aplikasi yang sudah terpasang.",
-    "legal": "Halaman hukum saat ini tersedia dalam bahasa Inggris.",
     "language": "Bahasa"
   },
   "ko": {
@@ -137,7 +128,6 @@ const HardBeetInviteCopy = {
     "install": "앱 스토어에서 HardBeet 찾기",
     "instructions": "설치 전에 초대 코드를 복사하세요. 설치 후 여기로 돌아와 HardBeet을 열거나 로그인 후 코드를 입력하세요. 이메일로 받은 로그인 코드와는 다릅니다.",
     "availability": "HardBeet은 최종 테스트 중입니다. 스토어별 이용 가능 여부는 다를 수 있습니다. 기존 테스터는 설치된 앱을 열 수 있습니다.",
-    "legal": "법률 관련 페이지는 현재 영어로 제공됩니다.",
     "language": "언어"
   },
   "zh-Hans": {
@@ -151,7 +141,6 @@ const HardBeetInviteCopy = {
     "install": "在您的应用商店中查找 HardBeet",
     "instructions": "安装前请复制此邀请码。安装后返回此页面打开 HardBeet，或登录后输入邀请码。这不是通过电子邮件收到的登录验证码。",
     "availability": "HardBeet 正在进行最终测试。应用商店的可用情况可能不同；现有测试者可以打开已安装的应用。",
-    "legal": "法律页面目前以英语提供。",
     "language": "语言"
   },
   "th": {
@@ -165,7 +154,6 @@ const HardBeetInviteCopy = {
     "install": "ค้นหา HardBeet ในร้านแอปของคุณ",
     "instructions": "คัดลอกรหัสเชิญก่อนติดตั้ง หลังติดตั้งให้กลับมาที่นี่แล้วเปิด HardBeet หรือกรอกรหัสหลังลงชื่อเข้าใช้ รหัสนี้ไม่ใช่รหัสลงชื่อเข้าใช้ที่ได้รับทางอีเมล",
     "availability": "HardBeet อยู่ระหว่างการทดสอบขั้นสุดท้าย ความพร้อมในร้านแอปอาจแตกต่างกัน ผู้ทดสอบเดิมเปิดแอปที่ติดตั้งไว้ได้",
-    "legal": "หน้าข้อมูลทางกฎหมายเป็นภาษาอังกฤษในขณะนี้",
     "language": "ภาษา"
   },
   "ur": {
@@ -179,7 +167,6 @@ const HardBeetInviteCopy = {
     "install": "اپنے ایپ اسٹور میں HardBeet تلاش کریں",
     "instructions": "انسٹال کرنے سے پہلے دعوت کا کوڈ کاپی کریں۔ پھر یہاں واپس آ کر HardBeet کھولیں، یا سائن ان کے بعد کوڈ درج کریں۔ یہ ای میل سے ملنے والا سائن اِن کوڈ نہیں ہے۔",
     "availability": "HardBeet آخری جانچ کے مرحلے میں ہے۔ اسٹور میں دستیابی مختلف ہو سکتی ہے؛ موجودہ ٹیسٹر انسٹال شدہ ایپ کھول سکتے ہیں۔",
-    "legal": "قانونی صفحات فی الحال انگریزی میں ہیں۔",
     "language": "زبان"
   },
   "vi": {
@@ -193,7 +180,6 @@ const HardBeetInviteCopy = {
     "install": "Tìm HardBeet trong cửa hàng ứng dụng",
     "instructions": "Sao chép mã mời trước khi cài đặt. Sau đó quay lại đây và mở HardBeet, hoặc nhập mã sau khi đăng nhập. Đây không phải mã đăng nhập được gửi qua email.",
     "availability": "HardBeet đang trong giai đoạn thử nghiệm cuối. Tình trạng trên cửa hàng có thể khác nhau; người thử nghiệm có thể mở ứng dụng đã cài.",
-    "legal": "Các trang pháp lý hiện được cung cấp bằng tiếng Anh.",
     "language": "Ngôn ngữ"
   }
 };
