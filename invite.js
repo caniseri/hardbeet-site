@@ -43,6 +43,10 @@ const HardBeetInvitation = (() => {
       doc.documentElement.dir = language === "ur" ? "rtl" : "ltr";
       doc.title = `${text.title} | HardBeet`;
       select.value = language;
+      for (const document of ["privacy", "terms", "delete-account"]) {
+        const link = doc.getElementById(`legal-${document}`);
+        if (link) link.href = language === "en" ? `./${document}.html` : `./legal/${language}/${document}.html`;
+      }
       for (const element of doc.querySelectorAll("[data-copy]")) element.textContent = text[element.dataset.copy];
       doc.getElementById("code").textContent = token || "------";
       copyButton.disabled = !token;
