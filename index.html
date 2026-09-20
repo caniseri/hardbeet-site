@@ -174,11 +174,13 @@
         color: #fff;
         border-radius: 12px;
         padding: 10px 18px 10px 14px;
-        opacity: 0.55;
-        cursor: default;
+        text-decoration: none;
+        cursor: pointer;
         user-select: none;
       }
 
+      .lp-badge:hover { background: #343438; }
+      .lp-badge:focus-visible { outline: 3px solid var(--lp-ink); outline-offset: 4px; }
       .lp-badge svg { display: block; }
 
       .lp-badge .lines { display: flex; flex-direction: column; line-height: 1.2; text-align: left; }
@@ -758,7 +760,7 @@
       <section class="lp-hero">
         <div class="wrap">
           <div>
-            <span class="lp-eyebrow">Preparing for release · iOS &amp; Android</span>
+            <span class="lp-eyebrow">Available now · iOS &amp; Android</span>
             <h1>Know when to reach out, <em>without watching someone.</em></h1>
             <p class="lp-lede">
               A daily check-in agreement between independent loved ones. Share
@@ -767,16 +769,16 @@
               location.
             </p>
             <div class="lp-badges" aria-label="App store availability">
-              <span class="lp-badge" aria-disabled="true">
+              <a class="lp-badge" href="https://apps.apple.com/app/id6790265422" aria-label="Download HardBeet on the App Store">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.54c-.03-2.89 2.36-4.28 2.47-4.35-1.35-1.97-3.44-2.24-4.18-2.27-1.78-.18-3.47 1.05-4.37 1.05-.9 0-2.29-1.02-3.77-1-1.94.03-3.72 1.13-4.72 2.86-2.01 3.49-.51 8.66 1.45 11.49.96 1.39 2.1 2.94 3.6 2.88 1.44-.06 1.99-.93 3.73-.93 1.74 0 2.23.93 3.76.9 1.55-.03 2.53-1.41 3.48-2.8 1.09-1.61 1.54-3.16 1.57-3.24-.03-.02-3-1.15-3.02-4.59zM14.16 4.06c.8-.96 1.33-2.3 1.18-3.64-1.14.05-2.53.76-3.35 1.72-.73.85-1.38 2.21-1.21 3.52 1.28.1 2.58-.65 3.38-1.6z"/></svg>
-                <span class="lines"><small>Coming soon on the</small><span>App Store</span></span>
-              </span>
-              <span class="lp-badge" aria-disabled="true">
+                <span class="lines"><small>Download on the</small><span>App Store</span></span>
+              </a>
+              <a class="lp-badge" href="https://play.google.com/store/apps/details?id=app.hardbeet.mobile" aria-label="Get HardBeet on Google Play">
                 <svg width="22" height="24" viewBox="0 0 24 26" fill="currentColor" aria-hidden="true"><path d="M1.57.62A2.02 2.02 0 0 0 1 2.05v21.9c0 .56.22 1.06.57 1.43l.09.08L13.93 13.2v-.28L1.66.54l-.09.08z"/><path d="M18.02 17.29l-4.09-4.1v-.28l4.09-4.09.09.05 4.85 2.76c1.39.78 1.39 2.07 0 2.86l-4.85 2.75-.09.05z" opacity=".8"/><path d="M18.11 17.24l-4.18-4.18L1.57 25.38c.46.48 1.21.54 2.06.06l14.48-8.2" opacity=".6"/><path d="M18.11 8.87L3.63.67C2.78.19 2.03.25 1.57.73l12.36 12.33 4.18-4.19z" opacity=".9"/></svg>
-                <span class="lines"><small>Coming soon on</small><span>Google Play</span></span>
-              </span>
+                <span class="lines"><small>Get it on</small><span>Google Play</span></span>
+              </a>
               <p class="lp-soon-note">
-                Free at launch. Want a note when it's live? Email
+                Free to download and use. Questions? Email
                 <a href="mailto:support@gethardbeet.com">support@gethardbeet.com</a>.
               </p>
             </div>
@@ -1149,10 +1151,10 @@
               </p>
             </details>
             <details>
-              <summary>Will HardBeet be free?</summary>
+              <summary>Is HardBeet free?</summary>
               <p>
-                Yes. HardBeet will be free at launch while we learn from early
-                users and improve the daily check-in experience.
+                Yes. HardBeet is free to download and use, with no subscription
+                or in-app purchases.
               </p>
             </details>
             <details>
@@ -1171,21 +1173,20 @@
       <section class="lp-download" id="download">
         <div class="wrap">
           <p class="lp-kicker">Get HardBeet</p>
-          <h2>In final testing for both stores.</h2>
+          <h2>Available on iOS and Android.</h2>
           <p class="lp-sub">
-            HardBeet will be free at launch on iOS and Android. Email
-            <a href="mailto:support@gethardbeet.com">support@gethardbeet.com</a>
-            and we'll let you know the moment it's live.
+            Download HardBeet for free and start a daily check-in agreement
+            with someone you trust.
           </p>
           <div class="lp-badges" aria-label="App store availability">
-            <span class="lp-badge" aria-disabled="true">
+            <a class="lp-badge" href="https://apps.apple.com/app/id6790265422" aria-label="Download HardBeet on the App Store">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.54c-.03-2.89 2.36-4.28 2.47-4.35-1.35-1.97-3.44-2.24-4.18-2.27-1.78-.18-3.47 1.05-4.37 1.05-.9 0-2.29-1.02-3.77-1-1.94.03-3.72 1.13-4.72 2.86-2.01 3.49-.51 8.66 1.45 11.49.96 1.39 2.1 2.94 3.6 2.88 1.44-.06 1.99-.93 3.73-.93 1.74 0 2.23.93 3.76.9 1.55-.03 2.53-1.41 3.48-2.8 1.09-1.61 1.54-3.16 1.57-3.24-.03-.02-3-1.15-3.02-4.59zM14.16 4.06c.8-.96 1.33-2.3 1.18-3.64-1.14.05-2.53.76-3.35 1.72-.73.85-1.38 2.21-1.21 3.52 1.28.1 2.58-.65 3.38-1.6z"/></svg>
-              <span class="lines"><small>Coming soon on the</small><span>App Store</span></span>
-            </span>
-            <span class="lp-badge" aria-disabled="true">
+              <span class="lines"><small>Download on the</small><span>App Store</span></span>
+            </a>
+            <a class="lp-badge" href="https://play.google.com/store/apps/details?id=app.hardbeet.mobile" aria-label="Get HardBeet on Google Play">
               <svg width="22" height="24" viewBox="0 0 24 26" fill="currentColor" aria-hidden="true"><path d="M1.57.62A2.02 2.02 0 0 0 1 2.05v21.9c0 .56.22 1.06.57 1.43l.09.08L13.93 13.2v-.28L1.66.54l-.09.08z"/><path d="M18.02 17.29l-4.09-4.1v-.28l4.09-4.09.09.05 4.85 2.76c1.39.78 1.39 2.07 0 2.86l-4.85 2.75-.09.05z" opacity=".8"/><path d="M18.11 17.24l-4.18-4.18L1.57 25.38c.46.48 1.21.54 2.06.06l14.48-8.2" opacity=".6"/><path d="M18.11 8.87L3.63.67C2.78.19 2.03.25 1.57.73l12.36 12.33 4.18-4.19z" opacity=".9"/></svg>
-              <span class="lines"><small>Coming soon on</small><span>Google Play</span></span>
-            </span>
+              <span class="lines"><small>Get it on</small><span>Google Play</span></span>
+            </a>
           </div>
         </div>
       </section>
